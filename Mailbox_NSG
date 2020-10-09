@@ -1,0 +1,69 @@
+import time
+from selenium.webdriver import Firefox
+from selenium.webdriver.firefox.options import Options
+from selenium import webdriver
+from selenium.webdriver.support.select import Select as driverselect
+
+driver = webdriver.Firefox()
+url = 'https://url.com:446'
+opts = Options()
+driver.maximize_window()
+driver.get(url)
+# noinspection PyDeprecation
+# opts.set_headless()
+#assert opts.headless  # Operating in headless mode
+
+# New mailbox info gathering #
+username = input('Enter username')
+password = input('Enter password')
+fname = input('Enter first name')
+lname = input('Enter last name')
+dname = input('Enter display name')
+job = input('Enter job title')
+
+# Logging into the website #
+search_form = driver.find_element_by_id('LoginName')
+search_form.send_keys('user')
+search_form = driver.find_element_by_id('Password')
+search_form.send_keys('password')
+search_form.submit()
+time.sleep(3)
+
+# Finding all the important fields, and clicking on things #
+provision = driver.find_element_by_xpath('/html/body/div[2]/div[2]/nav/div/ul/li[4]/a')
+provision.click()
+exchange = driver.find_element_by_xpath('/html/body/div[2]/div[2]/nav/div/ul/li[4]/ul/li/a')
+exchange.click()
+mailboxes = driver.find_element_by_xpath('/html/body/div[2]/div[3]/div[1]/div[3]/div/div/div/div[2]/div/div[3]/table/tbody/tr/td[6]/div/button[1]')
+mailboxes.click()
+create_mailbox = driver.find_element_by_xpath('/html/body/div[2]/div[3]/div[1]/div[3]/div/div/div/div[1]/div/div/button[1]')
+create_mailbox.click()
+#
+# # Entering attributes #
+# #add_user_name = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/form/div[6]/div/div[1]/div/div[1]/div')
+# #add_user_name.send_keys(username)
+# add_password = driver.find_element_by_xpath('//*[@id="Password"]')
+# add_password.send_keys(password)
+# add_password = driver.find_element_by_xpath('//*[@id="ConfirmPassword"]')
+# add_password.send_keys(password)
+# add_DN = driver.find_element_by_xpath('//*[@id="GeneralProfile_DisplayName"]')
+# add_DN.send_keys(dname)
+# add_fname = driver.find_element_by_xpath('//*[@id="GeneralProfile_FirstName"]')
+# add_fname.send_keys(fname)
+# add_lname = driver.find_element_by_xpath('//*[@id="GeneralProfile_LastName"]')
+# add_lname.send_keys(lname)
+# add_job = driver.find_element_by_xpath('//*[@id="GeneralProfile_JobTitle"]')
+
+
+# Mailbox Settings #
+#Enable unlimited size
+mail_size = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/form/div[9]/div/div[1]/div/div[2]/div/span/label/input')
+mail_size.click()
+
+# Enable unlimited for Prohibit send/recieve
+mail_size1 = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/form/div[9]/div/div[1]/div/div[5]/div/span/label/input')
+mail_size1.click()
+mail_size2 = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/form/div[9]/div/div[1]/div/div[6]/div/span/label/input')
+mail_size2.click()
+
+
