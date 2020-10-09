@@ -23,9 +23,9 @@ job = input('Enter job title')
 
 # Logging into the website #
 search_form = driver.find_element_by_id('LoginName')
-search_form.send_keys('ssimail')
+search_form.send_keys('')
 search_form = driver.find_element_by_id('Password')
-search_form.send_keys('Cloudpanel19!')
+search_form.send_keys('')
 search_form.submit()
 time.sleep(3)
 
