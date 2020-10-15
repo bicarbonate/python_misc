@@ -1,0 +1,12 @@
+def main(user, fname, lname, dname, job, password):
+	"Create mailbox using parameters"
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser(description="This program creates a new mailbox for SSI users on NSG's system")
+	parser.add_argument('user', type=str, default=0, help='username')
+	parser.add_argument('fname', type=str, default=0, help='first name')
+	parser.add_argument('lname', type=str, default=0, help='last name')
+	parser.add_argument('dname', type=str, default=0, help='displayname')
+	parser.add_argument('job', type=str, default=0, help='job title')
+	parser.add_argument('password', type=str, default=0, help='mailbox password')
+	args = parser.parse_args()
+	main(user=args.user, fname=args.fname, lname=args.lname, dname=args.dname, job=args.job, password=args.password)
